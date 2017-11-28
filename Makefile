@@ -70,6 +70,7 @@ build_dir:
 	printf 'REPOSITORIES += $$(GENODE_DIR)/../toolchain-host\n' >> $(VAGRANT_BUILD_CONF)
 	printf 'REPOSITORIES += $$(GENODE_DIR)/../genode-CheckpointRestore-SharedMemory\n' >> $(VAGRANT_BUILD_CONF)
 	printf 'REPOSITORIES += $$(GENODE_DIR)/repos/dde_linux\n' >> $(VAGRANT_BUILD_CONF)
+	printf 'REPOSITORIES += $$(GENODE_DIR)/../\n' >> $(VAGRANT_BUILD_CONF)
 	printf 'MAKE += -j4' >> $(VAGRANT_BUILD_CONF)
 ifneq (,$(findstring if13praktikum, $(shell groups)))
 	printf 'CROSS_DEV_PREFIX=/var/tmp/usr/local/genode-gcc/bin/genode-arm-\n' >> $(VAGRANT_TOOLS_CONF)
@@ -89,6 +90,7 @@ jenkins_build_dir:
 	printf 'REPOSITORIES += $$(GENODE_DIR)/../toolchain-host\n' >> $(JENKINS_BUILD_CONF)
 	printf 'REPOSITORIES += $$(GENODE_DIR)/../genode-CheckpointRestore-SharedMemory\n' >> $(JENKINS_BUILD_CONF)
 	printf 'REPOSITORIES += $$(GENODE_DIR)/repos/dde_linux\n' >> $(JENKINS_BUILD_CONF)
+	printf 'REPOSITORIES += $$(GENODE_DIR)/../\n' >> $(JENKINS_BUILD_CONF)
 	printf 'MAKE += -j' >> $(JENKINS_BUILD_CONF)
 	echo "CROSS_DEV_PREFIX=$(shell pwd)/usr/local/genode-gcc/bin/genode-arm-" >> $(JENKINS_TOOLS_CONF)
 
