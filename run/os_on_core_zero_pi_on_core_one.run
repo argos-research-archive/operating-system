@@ -55,6 +55,9 @@ set config {
 	<start name="pi">
 		<resource name="RAM" quantum="1M"/>
 		<affinity xpos="1" width="2" />
+		<config>
+			<arg1>123456</arg1>
+		</config>
 	</start>
 	<start name="timer">
 		<resource name="RAM" quantum="1M"/>

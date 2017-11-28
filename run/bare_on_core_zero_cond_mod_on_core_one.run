@@ -23,6 +23,9 @@ install_config {
 	<start name="cond_mod">
 		<resource name="RAM" quantum="1M"/>
 		<affinity xpos="1" width="2" />
+		<config>
+			<arg1>123456</arg1>
+		</config>
 	</start>
 </config>}
 
@@ -30,7 +33,7 @@ install_config {
 # Boot image
 #
 
-build_boot_image { core init cond_mod ld.lib.so libc.lib.so }
+build_boot_image { core init cond_mod ld.lib.so libc.lib.so libm.lib.so stdcxx.lib.so}
 
 append qemu_args " -nographic "
 
