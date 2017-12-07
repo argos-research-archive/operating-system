@@ -2,7 +2,7 @@ make -C build/genode-focnados_pbxa9/ run/bare_on_core_zero >> log/bare_and_tasks
 make -C build/genode-focnados_pbxa9/ run/bare_on_core_zero_cond_mod_on_core_one >> log/bare_and_tasks/bare_on_core_zero_cond_mod_on_core_one_fp.txt 2>&1
 make -C build/genode-focnados_pbxa9/ run/bare_on_core_zero_cond_42_on_core_one >> log/bare_and_tasks/bare_on_core_zero_cond_42_on_core_one_fp.txt 2>&1
 make -C build/genode-focnados_pbxa9/ run/bare_on_core_zero_hey_on_core_one >> log/bare_and_tasks/bare_on_core_zero_hey_on_core_one_fp.txt 2>&1
-make -C build/genode-focnados_pbxa9/ run/bare_on_core_zero_idle_on_core_one >> log/bare_and_tasks/bare_on_core_zero_cond_idle_core_one_fp.txt 2>&1
+make -C build/genode-focnados_pbxa9/ run/bare_on_core_zero_idle_on_core_one >> log/bare_and_tasks/bare_on_core_zero_idle_core_one_fp.txt 2>&1
 make -C build/genode-focnados_pbxa9/ run/bare_on_core_zero_linpack_on_core_one >> log/bare_and_tasks/bare_on_core_zero_linpack_on_core_one_fp.txt 2>&1
 make -C build/genode-focnados_pbxa9/ run/bare_on_core_zero_namaste_on_core_one >> log/bare_and_tasks/bare_on_core_zero_namaste_on_core_one_fp.txt 2>&1
 make -C build/genode-focnados_pbxa9/ run/bare_on_core_zero_pi_on_core_one >> log/bare_and_tasks/bare_on_core_zero_pi_on_core_one_fp.txt 2>&1
