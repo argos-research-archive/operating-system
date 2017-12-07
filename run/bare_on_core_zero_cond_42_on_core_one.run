@@ -35,6 +35,6 @@ install_config {
 
 build_boot_image { core init cond_42 ld.lib.so libc.lib.so libm.lib.so stdcxx.lib.so}
 
-append qemu_args " -nographic "
+append qemu_args " -nographic -smp 2"
 
-run_genode_until "hello test completed.*\n" 10
+run_genode_until "exited with exit value 0.*\n" 10

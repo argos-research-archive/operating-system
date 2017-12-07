@@ -173,4 +173,4 @@ build_boot_image $boot_modules
 
 append qemu_args " -nographic -smp 2"
 
-if {$skip_run == 0} {run_genode_until forever}
+if {$skip_run == 0} {run_genode_until "baum" 60}

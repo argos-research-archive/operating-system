@@ -2,7 +2,7 @@
 # Build
 #
 
-build { core init idle }
+build { core init }
 
 create_boot_directory
 
@@ -14,23 +14,17 @@ install_config {
 <config verbose="yes" prio_levels="128">
 	<parent-provides>
 		<service name="LOG"/>
-		<service name="ROM"/>
 	</parent-provides>
-	<affinity-space width="2" />
 	<default-route>
 		<any-service> <parent/> <any-child/> </any-service>
 	</default-route>
-	<start name="idle">
-		<resource name="RAM" quantum="1M"/>
-		<affinity xpos="1" width="2" />
-	</start>
 </config>}
 
 #
 # Boot image
 #
 
-build_boot_image { core init idle ld.lib.so libc.lib.so }
+build_boot_image { core init }
 
 append qemu_args " -nographic -smp 2"
 
