@@ -24,7 +24,7 @@ install_config {
 		<resource name="RAM" quantum="1M"/>
 		<affinity xpos="1" width="2" />
 		<config>
-			<arg1>123456</arg1>
+			<arg1>123456789</arg1>
 		</config>
 	</start>
 </config>}
@@ -37,4 +37,4 @@ build_boot_image { core init pi ld.lib.so libc.lib.so libm.lib.so stdcxx.lib.so}
 
 append qemu_args " -nographic -smp 2"
 
-run_genode_until "exited with exit value 0.*\n" 10
+run_genode_until "exited with exit value 0.*\n" 300

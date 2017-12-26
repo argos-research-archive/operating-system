@@ -13,7 +13,7 @@ if {[expr !$use_usb_driver && !$use_nic_driver]} {
 
 set build_components {
 	core init dom0-HW parser taskloader mon_manager utilization sched_controller sync
-	pi
+	linpack
 	drivers/timer
 	drivers/nic
 }
@@ -52,11 +52,11 @@ set config {
 	<default-route>
 		<any-service> <parent/> <any-child/> </any-service>
 	</default-route>
-	<start name="pi">
-		<resource name="RAM" quantum="1M"/>
+	<start name="linpack">
+		<resource name="RAM" quantum="100M"/>
 		<affinity xpos="1" width="2" />
 		<config>
-			<arg1>123456</arg1>
+			<arg1>1234</arg1>
 		</config>
 	</start>
 	<start name="timer">
@@ -65,7 +65,7 @@ set config {
 		<provides> <service name="Timer"/> </provides>
 	</start>
 	<start name="mon_manager">
-        	<resource name="RAM" quantum="40M"/>
+        	<resource name="RAM" quantum="10M"/>
 		<affinity xpos="0" width="2" />
         	<provides><service name="mon_manager"/></provides>
         </start>
@@ -83,7 +83,7 @@ set config {
 		</config>
 	</start>
 	<start name="taskloader">
-		<resource name="RAM" quantum="40M"/>
+		<resource name="RAM" quantum="10M"/>
 		<affinity xpos="0" width="2" />
 		<provides><service name="taskloader"/></provides>
 		<config>
@@ -92,7 +92,7 @@ set config {
 		</config>
 	</start>
 	<start name="parser">
-		<resource name="RAM" quantum="40M"/>
+		<resource name="RAM" quantum="10M"/>
 		<affinity xpos="0" width="2" />
 		<provides> <service name="parser"/> </provides>
 		<config>
@@ -157,7 +157,7 @@ append_if [expr ![have_spec zybo]] qemu_args "-net nic,model=lan9118 "
 set boot_modules {
 	core init dom0-HW taskloader parser mon_manager utilization sched_controller sync
 	timer
-	pi
+	linpack
 	ld.lib.so
 	libc.lib.so
 	stdcxx.lib.so
@@ -176,4 +176,4 @@ build_boot_image $boot_modules
 
 append qemu_args " -nographic -smp 2"
 
-if {$skip_run == 0} {run_genode_until "baum" 60}
+if {$skip_run == 0} {run_genode_until "baum" 300}

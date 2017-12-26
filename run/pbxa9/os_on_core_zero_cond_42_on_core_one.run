@@ -13,7 +13,7 @@ if {[expr !$use_usb_driver && !$use_nic_driver]} {
 
 set build_components {
 	core init dom0-HW parser taskloader mon_manager utilization sched_controller sync
-	linpack
+	cond_42
 	drivers/timer
 	drivers/nic
 }
@@ -52,11 +52,11 @@ set config {
 	<default-route>
 		<any-service> <parent/> <any-child/> </any-service>
 	</default-route>
-	<start name="linpack">
+	<start name="cond_42">
 		<resource name="RAM" quantum="1M"/>
 		<affinity xpos="1" width="2" />
 		<config>
-			<arg1>123</arg1>
+			<arg1>123456789</arg1>
 		</config>
 	</start>
 	<start name="timer">
@@ -157,7 +157,7 @@ append_if [expr ![have_spec zybo]] qemu_args "-net nic,model=lan9118 "
 set boot_modules {
 	core init dom0-HW taskloader parser mon_manager utilization sched_controller sync
 	timer
-	linpack
+	cond_42
 	ld.lib.so
 	libc.lib.so
 	stdcxx.lib.so
@@ -176,4 +176,4 @@ build_boot_image $boot_modules
 
 append qemu_args " -nographic -smp 2"
 
-if {$skip_run == 0} {run_genode_until "baum" 60}
+if {$skip_run == 0} {run_genode_until "baum" 300}

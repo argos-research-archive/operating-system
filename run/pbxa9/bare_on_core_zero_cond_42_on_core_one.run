@@ -2,7 +2,7 @@
 # Build
 #
 
-build { core init tumatmul }
+build { core init cond_42 }
 
 create_boot_directory
 
@@ -20,11 +20,11 @@ install_config {
 	<default-route>
 		<any-service> <parent/> <any-child/> </any-service>
 	</default-route>
-	<start name="tumatmul">
-		<resource name="RAM" quantum="1M"/>
+	<start name="cond_42">
+		<resource name="RAM" quantum="20M"/>
 		<affinity xpos="1" width="2" />
 		<config>
-			<arg1>123</arg1>
+			<arg1>123456789</arg1>
 		</config>
 	</start>
 </config>}
@@ -33,7 +33,7 @@ install_config {
 # Boot image
 #
 
-build_boot_image { core init tumatmul ld.lib.so libc.lib.so libm.lib.so libc.lib.so stdcxx.lib.so}
+build_boot_image { core init cond_42 ld.lib.so libc.lib.so libm.lib.so stdcxx.lib.so}
 
 append qemu_args " -nographic -smp 2"
 
